@@ -1,10 +1,11 @@
 <?php
 // config/db.php
-define('DB_HOST', '127.0.0.1');
-define('DB_NAME', 'caceria');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('BASE_URL', '/caceria/');
+// config/db.php
+define('DB_HOST', getenv('DB_HOST') ?: '127.0.0.1');
+define('DB_NAME', getenv('DB_NAME') ?: 'caceria');
+define('DB_USER', getenv('DB_USER') ?: 'root');
+define('DB_PASS', getenv('DB_PASS') ?: '');
+define('BASE_URL', getenv('BASE_URL') ?: '/caceria/');
 
 try {
     $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4", DB_USER, DB_PASS);
