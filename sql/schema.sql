@@ -45,9 +45,12 @@ CREATE TABLE submissions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     team_id INT NOT NULL,
     challenge_id INT NOT NULL,
+    player_id INT NULL,
     image_url VARCHAR(255) NOT NULL,
+    is_collage TINYINT(1) DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE,
     FOREIGN KEY (challenge_id) REFERENCES challenges(id) ON DELETE CASCADE,
+    FOREIGN KEY (player_id) REFERENCES players(id) ON DELETE SET NULL,
     UNIQUE(team_id, challenge_id)
 );

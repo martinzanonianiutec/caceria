@@ -1,0 +1,32 @@
+services:
+  # The PHP Application
+  - type: web
+    name: caceria-app
+    runtime: docker
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: caceria-db
+          property: host
+      - key: DB_NAME
+        fromDatabase:
+          name: caceria-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: caceria-db
+          property: user
+      - key: DB_PASS
+        fromDatabase:
+          name: caceria-db
+          property: password
+      - key: DB_AUTO_INIT
+        value: "true"
+      - key: BASE_URL
+        value: /
+
+databases:
+  - name: caceria-db
+    databaseName: caceria
+    user: caceria_admin
+    plan: free # Change to a paid plan for persistence in production
